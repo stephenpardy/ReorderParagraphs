@@ -19,7 +19,6 @@ class ReorderParagraphsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         settings = sublime.load_settings(__name__ + '.sublime-settings')
         bib_location = settings.get('bibFile', './bibfile.bib')
-        print(bib_location)
         with open(bib_location, encoding="utf-8") as f:
             bib_file = f.read()
 
@@ -47,18 +46,19 @@ class ReorderParagraphsCommand(sublime_plugin.TextCommand):
             indices = []
 
             for i, textitem in enumerate(paragraphs):
-                if textitem.startswith('\citep{') or textitem.startswith('\n\citep{'):
-                    m = re.search(r'\citep{(.*?)}', textitem)
-                    if m is None:
-                        print("Cannot find citation in text block: {:s}".format(textitem))
-                    else:
-                        try:
-                            times.append(bib_dict[m.groups(1)[0]])
-                            indices.append(i)
-                        except KeyError:
-                            print("Cannot find entry for citation {:s}".format(m.groups(1)[0]))
-                            times.append(datetime(year=1, month=1, day=1))
-                            indices.append(i)
+                #if re.match('^\citep{', textitem) or re.match('^\n\citep{', textitem):
+                #if textitem.startswith('\citep{') or textitem.startswith('\n\citep{'):
+                m = re.search(r'\\cite[a-z]{0,3}{(.*?)}', textitem)
+                if m is None:
+                    print("Cannot find citation in text block: {:s}".format(textitem))
+                else:
+                    try:
+                        times.append(bib_dict[m.groups(1)[0]])
+                        indices.append(i)
+                    except KeyError:
+                        print("Cannot find entry for citation {:s}".format(m.groups(1)[0]))
+                        times.append(datetime(year=1, month=1, day=1))
+                        indices.append(i)
 
             #argsort function
             st = (i for i, _ in sorted(enumerate(times), key=lambda a: a.__getitem__(1)))

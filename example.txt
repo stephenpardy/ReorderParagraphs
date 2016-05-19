@@ -1,20 +1,14 @@
-\citep{Diaz:2011bb}rthg
-ertgh
-r
-thsid
+\citep{Diaz:2011bb} This is a description of a paper
+that was published in 2011
 
-\citep{Tremaine:1975cu}sdfasd
-fdfawefwe
-fwefw
+\citealt{Tremaine:1975cu} And these are some notes about an older paper.
+Good paper indeed.
 
-sergfsag
-awergawerf
-wefwef
+Look! A paragraph that doesn't have any citations in it.
+Don't move this around.
 
-\citep{BlandHawthorn:2007kc} HelloWorld dfg sdfgs
-f
-gs
-fgh
+\cite{BlandHawthorn:2007kc} This is another paper.
+They studied some cool stuff in this paper!
 
-edjfgjsdghf
-dgadfgaeg
+Lets end with some text
+Wouldn't want to move this text anywhere.
