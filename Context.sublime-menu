@@ -1,0 +1,14 @@
+[
+{
+    "id": "ReorderParagraphs",
+    "caption": "Reorder Paragraphs",
+    "children":[
+        {
+            "caption": "Reorder",
+            "command": "reorder_paragraphs"
+        },
+        {   "caption": "Choose Bibliography File",
+            "command": "reorder_paragraphs_select_bib_file"
+        }
+    ]
+}]
